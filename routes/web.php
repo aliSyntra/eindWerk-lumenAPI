@@ -30,6 +30,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
     $router->put('users/{id}', ['uses' => 'UserController@update']);
 
+    //router for user login
+    $router->get('users/login/{email}', ['uses' => 'UserController@userLogin']);
+
 
     /*routers for animals table*/
     $router->get('animals',  ['uses' => 'AnimalController@showAllAnimals']);
