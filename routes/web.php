@@ -57,6 +57,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
     $router->put('breeds/{id}', ['uses' => 'BreedController@update']);
 
+    //router for the breed selection box
     $router->get('breedbox', ['uses' => 'BreedController@getBreedsBox']);
 
 
@@ -84,4 +85,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('useranimals/{id}', ['uses' => 'UserAnimalController@delete']);
   
     $router->put('useranimals/{id}', ['uses' => 'UserAnimalController@update']);
+
+    //router to get specific users animals + the medication
+    $router->get('thisusersanimals/{id}', ['uses' => 'UserAnimalController@userFetch']);
   });
