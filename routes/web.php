@@ -57,6 +57,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
     $router->put('breeds/{id}', ['uses' => 'BreedController@update']);
 
+    $router->get('breedbox', ['uses' => 'BreedController@getBreedsBox']);
+
 
     /*routers for medications table*/
     $router->get('medications',  ['uses' => 'MedicationController@showAllMedications']);
@@ -68,6 +70,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('medications/{id}', ['uses' => 'MedicationController@delete']);
   
     $router->put('medications/{id}', ['uses' => 'MedicationController@update']);
+
+    $router->get('medications/animal/{id}', ['uses' => 'MedicationController@getAnimalMedication']);
 
 
     /*routers for useranimals table*/

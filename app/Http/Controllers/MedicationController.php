@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Medication;
 use Illuminate\Http\Request;
+use DB;
 
 class MedicationController extends Controller
-{
-    
+{   
+    public function getAnimalMedication($id) {
+        $results = DB::select("
+            select * FROM medications WHERE useranimal_id = '{$id}'
+        ");
+        return json_encode($results);
+    }
+
+    //base fucntions
     public function showAllMedications()
     {
         return response()->json(Medication::all());
