@@ -19,6 +19,16 @@ $router->get('/', function () use ($router) {
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
+     //router for the breed selection box
+     $router->get('breedbox', ['uses' => 'BreedController@getBreedsBox']);
+
+     //router to get specific users animals + the medication
+     $router->get('thisusersanimals/{id}', ['uses' => 'UserAnimalController@userFetch']);
+     
+     //router for user login
+     $router->get('users/login/{email}', ['uses' => 'UserController@userLogin']);
+
+    //generic routers
     /*routers for users table*/
     $router->get('users',  ['uses' => 'UserController@showAllUsers']);
   
@@ -29,9 +39,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('users/{id}', ['uses' => 'UserController@delete']);
   
     $router->put('users/{id}', ['uses' => 'UserController@update']);
-
-    //router for user login
-    $router->get('users/login/{email}', ['uses' => 'UserController@userLogin']);
 
 
     /*routers for animals table*/
@@ -56,9 +63,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('breeds/{id}', ['uses' => 'BreedController@delete']);
   
     $router->put('breeds/{id}', ['uses' => 'BreedController@update']);
-
-    //router for the breed selection box
-    $router->get('breedbox', ['uses' => 'BreedController@getBreedsBox']);
 
 
     /*routers for medications table*/
@@ -85,7 +89,4 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('useranimals/{id}', ['uses' => 'UserAnimalController@delete']);
   
     $router->put('useranimals/{id}', ['uses' => 'UserAnimalController@update']);
-
-    //router to get specific users animals + the medication
-    $router->get('thisusersanimals/{id}', ['uses' => 'UserAnimalController@userFetch']);
   });
